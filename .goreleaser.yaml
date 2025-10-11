@@ -1,7 +1,6 @@
 version: 2
 project_name: testcli
 
-
 builds:
   - id: testcli
     main: ./cmd/testcli/main.go
@@ -18,13 +17,9 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - README.md
-      - LICENSE*
 
 checksum:
   name_template: "checksums.txt"
-
-# Docker images are built in the workflow and attached as release assets.
-# Skip Docker publishing from GoReleaser to avoid registry dependencies.
 
 release:
   draft: false
