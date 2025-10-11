@@ -1,5 +1,5 @@
 # Go parameters
-BINARY_NAME=testcli
+BINARY_NAME=testy
 PKG=github.com/btschwartz12/testcli
 
 # Version info
@@ -16,7 +16,7 @@ BUILD_DIR=./bin
 build:
 	@echo "Building $(BINARY_NAME)..."
 	@mkdir -p $(BUILD_DIR)
-	CGO_ENABLED=0 go build -ldflags "$(LDFLAGS)" -o $(BUILD_DIR)/$(BINARY_NAME) ./cmd/$(BINARY_NAME)
+	CGO_ENABLED=0 go build -ldflags "$(LDFLAGS)" -o $(BUILD_DIR)/$(BINARY_NAME) ./cmd/testcli
 
 clean:
 	@echo "Cleaning $(BUILD_DIR)..."
