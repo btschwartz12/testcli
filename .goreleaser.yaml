@@ -33,12 +33,17 @@ homebrew_casks:
     completions:
       bash: completions/testy.bash
       zsh: completions/_testy
+
+    # https://goreleaser.com/customization/homebrew_casks#signing-and-notarizing
+    hooks:
+      post:
+          install: |
+            if OS.mac?
+              system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/testy"]
+            end
     
     caveats: |
-      The binary for this cask has been renamed to `testy` from `testcli`.
-
-      See the README for more information: https://github.com/btschwartz12/testcli
-
+      NOTE: the install executable is "testy", not "testcli". For more info, visit https://github.com/btschwartz12/testcli
 
 checksum:
   name_template: "checksums.txt"
