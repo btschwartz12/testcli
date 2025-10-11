@@ -17,6 +17,7 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - README.md
+      - completions/*
 
 homebrew_casks:
   - name: testcli
@@ -32,7 +33,7 @@ homebrew_casks:
     completions:
       bash: completions/testy.bash
       zsh: completions/_testy
-    skip_upload: true
+    
     caveats: |
       The binary for this cask has been renamed to `testy` from `testcli`.
 
