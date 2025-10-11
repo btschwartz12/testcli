@@ -17,7 +17,7 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - README.md
-      - completions/*
+      - docs/*
 
 homebrew_casks:
   - name: testcli
@@ -30,11 +30,10 @@ homebrew_casks:
     url:
       template: "https://github.com/btschwartz12/testcli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
       verified: "github.com/btschwartz12/testcli/"
-    completions:
-      bash: completions/testcli.bash
-      zsh: completions/_testcli
 
     commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
+    description: "Test CLI"
+    homepage: "https://github.com/btschwartz12/testcli"
 
     # https://goreleaser.com/customization/homebrew_casks#signing-and-notarizing
     hooks:

@@ -2,4 +2,3 @@ bin/
 dist/
 .env
 testy
-completions/

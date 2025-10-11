@@ -22,15 +22,4 @@ clean:
 	@echo "Cleaning $(BUILD_DIR)..."
 	@rm -rf $(BUILD_DIR)
 
-completions: build
-	@echo "Generating completions..."
-	@mkdir -p completions
-	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > completions/testcli.bash
-	@$(BUILD_DIR)/$(BINARY_NAME) completion zsh > completions/_testcli
-
-install-completions: generate-completions
-	@echo "Installing completions..."
-	@cp $(BUILD_DIR)/$(BINARY_NAME)-bash /usr/local/etc/bash_completion.d/$(BINARY_NAME)
-	@cp $(BUILD_DIR)/$(BINARY_NAME)-zsh /usr/local/share/zsh/site-functions/_$(BINARY_NAME)
-
 .PHONY: build clean
