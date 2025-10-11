@@ -29,6 +29,15 @@ homebrew_casks:
     url:
       template: "https://github.com/btschwartz12/testcli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
       verified: "github.com/btschwartz12/testcli/"
+    completions:
+      bash: completions/testy.bash
+      zsh: completions/_testy
+    skip_upload: true
+    caveats: |
+      The binary for this cask has been renamed to `testy` from `testcli`.
+
+      See the README for more information: https://github.com/btschwartz12/testcli
+
 
 checksum:
   name_template: "checksums.txt"
