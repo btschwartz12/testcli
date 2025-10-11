@@ -27,8 +27,8 @@ homebrew_casks:
       owner: btschwartz12
       name: homebrew-testcli
     url:
-      template: "https://github.com/{{ .ProjectGitOwner }}/{{ .ProjectGitName }}/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-      verified: "github.com/{{ .ProjectGitOwner }}/{{ .ProjectGitName }}/"
+      template: "https://github.com/btschwartz12/testcli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+      verified: "github.com/btschwartz12/testcli/"
 
 checksum:
   name_template: "checksums.txt"
