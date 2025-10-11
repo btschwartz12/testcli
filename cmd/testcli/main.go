@@ -11,7 +11,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use: "testcli",
+	Use: "testy",
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
 			// print all the args

@@ -22,7 +22,7 @@ clean:
 	@echo "Cleaning $(BUILD_DIR)..."
 	@rm -rf $(BUILD_DIR)
 
-generate-completions: build
+completions: build
 	@echo "Generating completions..."
 	@mkdir -p completions
 	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > completions/$(BINARY_NAME).bash

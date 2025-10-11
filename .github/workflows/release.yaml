@@ -28,7 +28,7 @@ jobs:
           go-version-file: 'go.mod'
           cache: true
       - name: Generate Completions
-        run: make generate-completions
+        run: make completions
       - name: GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
