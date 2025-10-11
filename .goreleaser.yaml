@@ -1,8 +1,8 @@
 version: 2
-project_name: testy
+project_name: testcli
 
 builds:
-  - id: testy
+  - id: testcli
     main: ./cmd/testcli/main.go
     env:
       - CGO_ENABLED=0
@@ -31,8 +31,10 @@ homebrew_casks:
       template: "https://github.com/btschwartz12/testcli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
       verified: "github.com/btschwartz12/testcli/"
     completions:
-      bash: completions/testy.bash
-      zsh: completions/_testy
+      bash: completions/testcli.bash
+      zsh: completions/_testcli
+
+    commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
 
     # https://goreleaser.com/customization/homebrew_casks#signing-and-notarizing
     hooks:
@@ -43,7 +45,7 @@ homebrew_casks:
             end
     
     caveats: |
-      NOTE: the install executable is "testy", not "testcli". For more info, visit https://github.com/btschwartz12/testcli
+      NOTE: the install executable is 'testy', not 'testcli'. For more info, visit https://github.com/btschwartz12/testcli
 
 checksum:
   name_template: "checksums.txt"

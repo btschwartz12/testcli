@@ -25,8 +25,8 @@ clean:
 completions: build
 	@echo "Generating completions..."
 	@mkdir -p completions
-	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > completions/$(BINARY_NAME).bash
-	@$(BUILD_DIR)/$(BINARY_NAME) completion zsh > completions/_$(BINARY_NAME)
+	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > completions/testcli.bash
+	@$(BUILD_DIR)/$(BINARY_NAME) completion zsh > completions/_testcli
 
 install-completions: generate-completions
 	@echo "Installing completions..."
