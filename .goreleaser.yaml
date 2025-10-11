@@ -17,6 +17,7 @@ archives:
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
       - README.md
+      - completions/*
       - docs/*
 
 homebrew_casks:
@@ -30,6 +31,9 @@ homebrew_casks:
     url:
       template: "https://github.com/btschwartz12/testcli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
       verified: "github.com/btschwartz12/testcli/"
+    completions:
+      bash: completions/testy.bash
+      zsh: completions/_testy
 
     commit_msg_template: "Brew cask update for {{ .ProjectName }} version {{ .Tag }}"
     description: "Test CLI"

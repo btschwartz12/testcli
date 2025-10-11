@@ -22,4 +22,10 @@ clean:
 	@echo "Cleaning $(BUILD_DIR)..."
 	@rm -rf $(BUILD_DIR)
 
-.PHONY: build clean
+completions: build
+	@echo "Generating completions..."
+	@mkdir -p completions
+	@$(BUILD_DIR)/$(BINARY_NAME) completion bash > completions/$(BINARY_NAME).bash
+	@$(BUILD_DIR)/$(BINARY_NAME) completion zsh > completions/_$(BINARY_NAME)
+
+.PHONY: build clean completions
