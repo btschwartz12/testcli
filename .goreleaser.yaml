@@ -18,6 +18,18 @@ archives:
     files:
       - README.md
 
+homebrew_casks:
+  - name: testcli
+    ids:
+      - default        # match your archive id
+    binary: testcli
+    tap:
+      owner: btschwartz12
+      name: homebrew-testcli
+    url:
+      template: "https://github.com/{{ .ProjectGitOwner }}/{{ .ProjectGitName }}/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+      verified: "github.com/{{ .ProjectGitOwner }}/{{ .ProjectGitName }}/"
+
 checksum:
   name_template: "checksums.txt"
 

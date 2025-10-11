@@ -1,3 +1,6 @@
 testcli
 !testcli/
 bin/
+dist/
+completions/
+.env
