@@ -21,9 +21,9 @@ archives:
 homebrew_casks:
   - name: testcli
     ids:
-      - default        # match your archive id
+      - default
     binary: testcli
-    tap:
+    repository:
       owner: btschwartz12
       name: homebrew-testcli
     url:
