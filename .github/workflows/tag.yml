@@ -1,0 +1,57 @@
+name: Test Tag
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to tag and release from'
+        required: true
+        default: 'main'
+
+permissions:
+  contents: write
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          branch: ${{ inputs.branch }}
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Set up Git
+        run: |
+          git config user.name "${GITHUB_ACTOR}"
+          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git fetch --all --tags
+
+      - name: Compute next semver tag
+        id: tag
+        run: |
+          set -euo pipefail
+          last=$(git tag --list 'v*.*.*' --sort=-v:refname | head -n1 || true)
+          if [ -z "$last" ]; then
+            new_tag="v0.0.1"
+          else
+            v="${last#v}"
+            IFS='.' read -r maj min pat <<< "$v" || true
+            pat="${pat%%-*}"
+            if [ -z "${maj:-}" ] || [ -z "${min:-}" ] || [ -z "${pat:-}" ]; then
+              new_tag="v0.0.1"
+            else
+              new_tag="v${maj}.${min}.$((pat + 1))"
+            fi
+          fi
+          echo "tag=${new_tag}" >> "$GITHUB_OUTPUT"
+
+      - name: Create and push tag
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          set -euo pipefail
+          git tag -a "${TAG}" HEAD -m "Test release ${TAG}"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin "${TAG}"
